@@ -5,7 +5,7 @@ module Watir
   class Element
     #Takes screenshot of element.
     def screenshot(dest)
-      file = "sc.png"
+      file = Tempfile.new('sc,png')
       begin
         opts = {:page_height_limit => 5000 }
         #browser.screenshot.save(file) #Take screenshot so exact image dimensions can be calulcated
@@ -35,7 +35,7 @@ module Watir
         image.crop!(x, y, wd.size.width.to_i, wd.size.height.to_i)
         image.save(dest)
       ensure
-        File.delete(file)
+        file.unlink
       end
     end
   end
