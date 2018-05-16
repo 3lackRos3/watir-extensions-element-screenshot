@@ -21,4 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"
   spec.add_runtime_dependency "chunky_png"
   spec.add_runtime_dependency "watir"
+  spec.add_runtime_dependency "watir-screenshot-stitch"
 end

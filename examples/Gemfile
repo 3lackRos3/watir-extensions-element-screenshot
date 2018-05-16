@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
 gem 'watir'
-gem 'watir-extensions-element-screenshot'#, :path => '..'
+gem 'watir-extensions-element-screenshot', :path => '/home/prem/Office/watir-extensions-element-screenshot'
 gem 'chunky_png'

@@ -1,13 +1,15 @@
 #require "watir/extensions/element/screenshot/version"
 require 'chunky_png'
-
+require 'watir-screenshot-stitch'
 module Watir
   class Element
     #Takes screenshot of element.
     def screenshot(dest)
-      file = Tempfile.new('sc')
+      file = "sc.png"
       begin
-        browser.screenshot.save(file) #Take screenshot so exact image dimensions can be calulcated
+        opts = {:page_height_limit => 5000 }
+        #browser.screenshot.save(file) #Take screenshot so exact image dimensions can be calulcated
+        browser.screenshot.save_stitch(file, browser, opts)
         image = ChunkyPNG::Image.from_file(file)
         ## Due to Screenshots no being of the full doc anymore, we need to Scroll to make Element Visible
         # x (Integer) — The x-coordinate of the top left corner of the image to be cropped.
@@ -30,10 +32,10 @@ module Watir
           browser.screenshot.save(file) #take new screenshot
           image = ChunkyPNG::Image.from_file(file) #open new screenshot
         end
-        image.crop!(x, y, wd.size.width, wd.size.height)
+        image.crop!(x, y, wd.size.width.to_i, wd.size.height.to_i)
         image.save(dest)
       ensure
-        file.unlink
+        File.delete(file)
       end
     end
   end
