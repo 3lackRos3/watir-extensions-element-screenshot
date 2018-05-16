@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    watir-extensions-element-screenshot (0.1.0)
+    watir-extensions-element-screenshot (0.1.2)
       chunky_png
       watir
       watir-screenshot-stitch
