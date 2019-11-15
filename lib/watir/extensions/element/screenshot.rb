@@ -9,7 +9,7 @@ module Watir
       begin
         opts = {:page_height_limit => 5000 }
         #browser.screenshot.save(file) #Take screenshot so exact image dimensions can be calulcated
-        browser.screenshot.save_stitch(file, browser, opts)
+        browser.screenshot.save_stitch(file, opts)
         image = ChunkyPNG::Image.from_file(file)
         ## Due to Screenshots no being of the full doc anymore, we need to Scroll to make Element Visible
         # x (Integer) — The x-coordinate of the top left corner of the image to be cropped.
